@@ -1,0 +1,63 @@
+/* ----------------------------------
+	@author:		Jan Panschab
+	@site:		HTML5 game
+---------------------------------- */
+/* ----------------------------------------------------------------
+  reset & basic settings
+---------------------------------------------------------------- */
+body,
+dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+form, fieldset, legend,
+th, td, hr, pre, p, blockquote { margin: 0; padding: 0; }
+article, aside, figure, footer, header, hgroup, nav, section { display: block; }
+label, input[type=button], input[type=submit], input[type=image], button { cursor: pointer; }
+nav ul { list-style: none !important; padding: 0 !important; }
+html { overflow-y: scroll; }
+button {  width: auto; overflow: visible; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+
+/* ----------------------------------------------------------------
+  basic styling
+---------------------------------------------------------------- */
+body { font: 15px Tahoma, Helvetica, Arial, sans-serif; line-height: 1.5; background: #000; color: #999; }
+
+#sidebar {
+	float: left;
+	padding-left: 50px;
+}
+
+
+/* ----------------------------------------------------------------
+  game
+---------------------------------------------------------------- */
+#order {
+	float: left;
+	width: 260px;
+	margin: 0 15px 10px 0;
+}
+#board {
+	clear: both;
+	float: left;
+	position: relative;
+	border: 5px solid #666;
+}
+#board > div {
+	position: absolute;
+	border: 1px solid #000;
+	background-repeat: no-repeat;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-transition: top 300ms ease-out, left 300ms ease-out, -moz-box-shadow 50ms ease;
+	-webkit-transition: 300ms ease-out;
+	-o-transition: 300ms ease-out;
+	transition: 300ms ease-out;
+}
+#board > .draggable:hover {
+	cursor: pointer;
+	-moz-box-shadow: 3px 3px 2px #999 inset;
+	-webkit-box-shadow: 1px 1px 3px #999 inset;
+	box-shadow: 2px 2px 3px #999 inset;
+}

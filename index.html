@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 Game</title>
+    <meta charset="utf-8" />
+    <link href="css/game.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h1>HTML5 Game</h1>
+    
+    <input id="order" />
+    
+    <p><span id="turn">1</span>. kolo</p>
+    
+    <div id="board">
+        <p>NO JS</p>
+    </div>
+    
+    <section id="sidebar">
+        <h2>Varianty</h2>
+        <ul id="variants">
+            <li><a href="#" data-src="gfx/chrome-logo.png">Google Chrome</a></li>
+            <li><a href="#" data-src="gfx/picasa-logo.png">Picasa</a></li>
+            <li><a href="#" data-src="gfx/gmail.png">Gmail</a></li>
+        </ul>
+        <p>
+            <label for="upload">Nahrát vlastní obrázek</label>
+            <input type="file" id="upload" />
+        </p>
+    </section>
+
+    <script src="js/jquery-1.6.4.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/game.js"></script>
+
+</body>
+</html>
