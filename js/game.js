@@ -132,32 +132,36 @@ window.log = function(){
             return shuffledBoard;
         },
         
+        // http://www.cs.bham.ac.uk/~mdr/teaching/modules04/java2/TilesSolvability.html
         isFinishable: function(board) {
             var self = this,
-                sum = 0,
-                total = 0;
+                inversions = 0;
             
             for (var i = 0; i < board.length - 1; i++) {
                 var rest = _.rest(board, i + 1),
-                    isHigher = 0;
+                    isLower = 0;
                 
                 for (var j in rest) {
                     var value = board[j - -i + 1];
                     
-                    if (value > board[i]) {
-                        isHigher++;
+                    if (value < board[i]) {
+                        isLower++;
                     }
                 }
                 
-                sum += isHigher;
+                inversions += isLower;
             }
             
             self.tile.emptyIndex = _.indexOf(board, self.tile.emptyId);
-            var emptyRow = Math.ceil(self.tile.emptyIndex / self.board.x);
+            var rowWithEmptyTile = Math.ceil(self.tile.emptyIndex / self.board.x);
             
-            total = sum + emptyRow;
+            // ( (grid width odd) && (#inversions even) )  ||  ( (grid width even) && ((blank on odd row from bottom) == (#inversions even)) )
+            var gridWidthOdd = self.board.x % 2,
+                inversionsEven = !inversions % 2,
+                blankOnOddRowFromBottom = rowWithEmptyTile % 2 == self.board.y % 2;
             
-            return !(total % 2);
+            // FIXME when grid width is 3 returns finished board!!!
+            return (gridWidthOdd && inversionsEven) || (!gridWidthOdd && (blankOnOddRowFromBottom == inversionsEven));
         },
         
         getDraggableTiles: function() {
